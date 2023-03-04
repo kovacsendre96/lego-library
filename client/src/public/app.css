@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --main-color: #1565C0;
+}
+
+@font-face {
+    font-family: legoFont;
+    src: url(../public/fonts/Legothick.ttf);
+}
+
+
+.nav {
+
+    height: 60px;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 10px;
+    z-index: 2;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.nav .link {
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+}
+
+.lego-font {
+    font-family: legoFont;
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: black;
+    text-shadow: 1px 1px #FFFF00;
+    margin: 20px;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none !important;
+}
+
+.full-width {
+    width: 100%
+}
+
+.margin-sm {
+    margin: 8px !important;
+}
+
+.margin-sm-vertical {
+    margin: 8px 0;
+}
+
+.margin-sm-horizontal {
+    margin: 0 8px;
+}
+
+.margin-md {
+    margin: 16px !important;
+}
+
+.margin-lg {
+    margin: 32px;
+}
+
+.img-border {
+    border: 1px solid gainsboro;
+}
+
+.thumbs-wrapper ul {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.carousel-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: 8px solid #f33 !important;
+}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid #f33 !important;
+}
+
+p {
+    margin: 0;
+}
+
+.details-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 15px;
+    text-align: center !important;
+}
+
+.details-text {
+    font-weight: bold;
+}
+
+.details-icon {
+    font-size: 3rem !important;
+    color: gray;
+}
+
+.details-box {
+    position: relative;
+}
+
+.separator-horizontal {
+    display: none !important;
+}
+
+.separator-vertical {
+    position: absolute;
+    left: 70%;
+    bottom: 50%;
+    transform: rotate(90deg);
+    width: 150px;
+}
+
+
+@media screen and (max-width: 899px) {
+    .separator-horizontal {
+        display: block !important;
+    }
+
+    .separator-vertical {
+        display: none !important;
+    }
+}
+
+.lego-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.input-width {
+    width: 210px;
+}
+
+.main-blue-color {
+    color: var(--main-color);
+}
+
+.main-blue-background {
+    background-color: var(--main-color);
+}
+
+.pointer-cursor {
+    cursor: pointer ;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.missing-piece-main-set {
+    transition: 0.3s;
+    background: rgba(117, 117, 117, .4);
+    cursor: pointer;
+    padding: 0 !important;
+
+}
+
+.missing-piece-main-set:hover {
+    background: rgba(117, 117, 117, .2);
+}

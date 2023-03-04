@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.afa081f9.css",
+    "main.js": "/static/js/main.daac0b3d.js",
+    "static/media/logo.png": "/static/media/logo.425e62c1dc2eca387483.png",
+    "static/media/Lego Spinner.gif": "/static/media/Lego Spinner.4549a8b4d2af48232ee2.gif",
+    "static/media/Legothick.ttf": "/static/media/Legothick.f552ac9867964e9901b4.ttf",
+    "index.html": "/index.html",
+    "main.afa081f9.css.map": "/static/css/main.afa081f9.css.map",
+    "main.daac0b3d.js.map": "/static/js/main.daac0b3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afa081f9.css",
+    "static/js/main.daac0b3d.js"
+  ]
+}
