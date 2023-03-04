@@ -3,9 +3,9 @@ import { setSnackbar } from "../state/snackbar";
 
 export default class MissingPiecesService {
   async index(id) {
-    let apiUrl = "http://localhost:8000/api/missing-pieces";
+    let apiUrl = "/api/missing-pieces";
     if (id) {
-      apiUrl = `http://localhost:8000/api/missing-pieces/${id}`;
+      apiUrl = `/api/missing-pieces/${id}`;
     }
     return axios
       .get(apiUrl)
@@ -19,7 +19,7 @@ export default class MissingPiecesService {
 
   async store(legoSet) {
     return axios
-      .post("http://localhost:8000/api/missing-pieces", legoSet)
+      .post("/api/missing-pieces", legoSet)
       .then((response) => {
         setSnackbar("Sikeres mentés", "success");
         return response.data;
@@ -32,7 +32,7 @@ export default class MissingPiecesService {
 
   async update(id, data) {
     return axios
-      .patch(`http://localhost:8000/api/missing-pieces/${id}`, data)
+      .patch(`/api/missing-pieces/${id}`, data)
       .then((response) => {
         setSnackbar("Sikeres mentés", "success");
         return response.data;
@@ -45,7 +45,7 @@ export default class MissingPiecesService {
 
   async delete(id) {
     return axios
-      .delete(`http://localhost:8000/api/missing-pieces/${id}`)
+      .delete(`/api/missing-pieces/${id}`)
       .then((response) => {
         setSnackbar("Sikeres törlés", "success");
         return response.data;
@@ -58,7 +58,7 @@ export default class MissingPiecesService {
 
   async show(id) {
     return axios
-      .get(`http://localhost:8000/api/missing-pieces/${id}`)
+      .get(`/api/missing-pieces/${id}`)
       .then((response) => response.data)
       .catch((error) => {
         setSnackbar(error.message, "error");
