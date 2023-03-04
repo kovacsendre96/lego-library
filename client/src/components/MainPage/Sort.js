@@ -11,7 +11,7 @@ const optionsArray = [
 
 const Sort = ({ legoData, setLegoData }) => {
   const sortDirectionFromLocalStore = localStorage.getItem("sortDirection");
-  const sortTypeLocalStore = localStorage.getItem("sortType");
+  const sortTypeLocalStore = localStorage.getItem("sortType").value;
   const [sortDirection, setSortDirection] = useState(
     JSON.parse(sortDirectionFromLocalStore) ?? "asc"
   );
