@@ -26,6 +26,7 @@ import { useRef } from "react";
 
 const MissingPiecesModal = ({
   selectedRows,
+  setSelectedParts,
   addMissingPartsModal,
   setAddMissingPartsModal,
   setId,
@@ -64,6 +65,7 @@ const MissingPiecesModal = ({
       });
       missingPiecesService.store(apiData);
       setAddMissingPartsModal(false);
+      setSelectedParts([]);
       formik.resetForm();
     },
   });

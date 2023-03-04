@@ -32,11 +32,13 @@ const MissingPieces = ({ missingPiecesDialog, setMissingPiecesDialog }) => {
         <Button autoFocus onClick={handleDialogClose} variant="text">
           Vissza
         </Button>
-        {missingPieces.length > 0 && (
+        {missingPieces.length > 0 ? (
           <PiecesTable
             missingPieces={missingPieces}
             setMissingPieces={setMissingPieces}
           />
+        ) : (
+          <h4 className="text-center text-lg">Nincs hiányzó elem</h4>
         )}
       </DialogContent>
     </Dialog>

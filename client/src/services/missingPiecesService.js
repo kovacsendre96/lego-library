@@ -25,7 +25,7 @@ export default class MissingPiecesService {
         return response.data;
       })
       .catch((error) => {
-        setSnackbar(error.message, "error");
+        setSnackbar(error?.response?.data?.message ?? error.message, "error");
         return [];
       });
   }
