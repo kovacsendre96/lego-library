@@ -20,14 +20,14 @@ function store(req, res) {
   body.forEach((piece) => {
     console.log("....................piece");
     console.log(piece);
-    db.query(sql, piece, (error, result) => {
-      if (error) {
-        throw error;
-      }
+      db.query(sql, piece, (error, result) => {
+        if (error) {
+          throw error;
+        }
+      });
     });
-  });
 
-  return res.status(200).json(body);
+    return res.status(200).json(body);
 }
 
 function update(req, res) {

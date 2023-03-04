@@ -5,7 +5,7 @@ import {
   GridLinkOperator,
   GridToolbarQuickFilter,
 } from "@mui/x-data-grid";
-import { Button, Grid, InputAdornment, Modal, TextField } from "@mui/material";
+import { Button, Grid, Modal } from "@mui/material";
 import MissingPiecesModal from "../MissingPieces/MissingPiecesModal";
 import { Box } from "@mui/system";
 
@@ -48,7 +48,7 @@ const SetParts = ({ set_id }) => {
       renderCell: (params) => (
         <img
           onClick={() => handleImageClick(params.value)}
-          className="pointer-cursor img-thumbnail"
+          className="cursor-pointer object-contain	 h-[90px] w-[90px]"
           alt={params.row.name}
           src={params.value}
         />
@@ -117,11 +117,7 @@ const SetParts = ({ set_id }) => {
           onClick={() => setAddMissingPartsModal(true)}
         />
       </Grid>
-      <Grid
-        container
-        direction={"column"}
-       className="h-[500px]"
-      >
+      <Grid container direction={"column"} className="h-[500px]">
         <DataGrid
           loading={rows.length === 0}
           rows={rows}
@@ -130,6 +126,7 @@ const SetParts = ({ set_id }) => {
           rowsPerPageOptions={[25, 50, 100]}
           checkboxSelection
           rowHeight={85}
+          selectionModel={selectedParts}
           onSelectionModelChange={onSelectionModelChange}
           onPageSizeChange={(value) => setPageSize(value)}
           hideFooterSelectedRowCount={true}
@@ -150,6 +147,7 @@ const SetParts = ({ set_id }) => {
           onClose={() => setImageModalOpen(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          className="w-full h-full flex items-center justify-center"
         >
           <img
             onClick={() => setImageModalOpen(true)}
@@ -160,6 +158,7 @@ const SetParts = ({ set_id }) => {
 
         <MissingPiecesModal
           selectedRows={selectedRows}
+          setSelectedParts={setSelectedParts}
           addMissingPartsModal={addMissingPartsModal}
           setAddMissingPartsModal={setAddMissingPartsModal}
           setId={set_id}
