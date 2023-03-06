@@ -20,7 +20,7 @@ import EditDialog from "../components/SetDetails/EditDialog";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import { renderSpinner } from "../Helpers/functions";
 
-const SetDetailsPage = () => {
+const LegoDetailsPage = () => {
   const [legoSet, setLegoSet] = useState();
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -154,4 +154,4 @@ const SetDetailsPage = () => {
   );
 };
 
-export default SetDetailsPage;
+export default LegoDetailsPage;
