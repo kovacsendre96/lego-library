@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} className="z-10 fixed left-0 top-0 w-full">
+      <Box sx={{ flexGrow: 1 }} className="w-full">
         <AppBar position="static">
           <Toolbar>
             <Grid container justifyContent={"center"}>

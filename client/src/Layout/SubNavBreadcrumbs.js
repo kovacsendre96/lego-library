@@ -21,7 +21,7 @@ const SubNavBreadcrumbs = () => {
   }
 
   return (
-    <Stack spacing={2} className="mt-[64px] py-3 px-4 bg-[#9cb7d1]">
+    <Stack spacing={2} className="py-3 px-4 bg-[#9cb7d1]">
       <Breadcrumbs
         className="!text-white"
         separator="/"

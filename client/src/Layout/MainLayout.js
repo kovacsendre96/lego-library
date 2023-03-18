@@ -11,9 +11,11 @@ const MainLayout = () => {
 
   return (
     <>
-      <Nav />
-      <SubNavBreadcrumbs />
-      <Grid className="mt-[12px]">
+      <div className="z-10 fixed left-0 top-0 w-full">
+        <Nav />
+        <SubNavBreadcrumbs />
+      </div>
+      <Grid className="mt-[110px]">
         <Outlet />
         <Snackbar
           open={snackbarOpen}
