@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.76b509b8.css",
-    "main.js": "/static/js/main.7ea62d35.js",
+    "main.css": "/static/css/main.cf79b49e.css",
+    "main.js": "/static/js/main.20e4a0da.js",
     "static/media/logo.png": "/static/media/logo.425e62c1dc2eca387483.png",
     "static/media/Lego Spinner.gif": "/static/media/Lego Spinner.4549a8b4d2af48232ee2.gif",
     "static/media/Legothick.ttf": "/static/media/Legothick.f552ac9867964e9901b4.ttf",
     "index.html": "/index.html",
-    "main.76b509b8.css.map": "/static/css/main.76b509b8.css.map",
-    "main.7ea62d35.js.map": "/static/js/main.7ea62d35.js.map"
+    "main.cf79b49e.css.map": "/static/css/main.cf79b49e.css.map",
+    "main.20e4a0da.js.map": "/static/js/main.20e4a0da.js.map"
   },
   "entrypoints": [
-    "static/css/main.76b509b8.css",
-    "static/js/main.7ea62d35.js"
+    "static/css/main.cf79b49e.css",
+    "static/js/main.20e4a0da.js"
   ]
 }
