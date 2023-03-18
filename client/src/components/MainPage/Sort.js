@@ -16,7 +16,7 @@ const Sort = ({ legoData, setLegoData }) => {
     JSON.parse(sortDirectionFromLocalStore) ?? "asc"
   );
   const [sortType, setSortType] = useState(
-    JSON.parse(sortTypeLocalStore).value ?? optionsArray[0].value
+    JSON.parse(sortTypeLocalStore) ?? optionsArray[0].value
   );
 
   useEffect(() => {
