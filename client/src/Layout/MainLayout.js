@@ -1,7 +1,8 @@
 import { Alert, Grid, Snackbar } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { useGlobalState } from "../state/snackbar";
-import Nav from "./Nav";
+import Nav from "../components/Nav";
+import SubNavBreadcrumbs from "./SubNavBreadcrumbs";
 
 const MainLayout = () => {
   const [snackbarOpen, setSnackbarOpen] = useGlobalState("snackbarOpen");
@@ -11,7 +12,8 @@ const MainLayout = () => {
   return (
     <>
       <Nav />
-      <Grid className="mt-[100px]">
+      <SubNavBreadcrumbs />
+      <Grid className="mt-[12px]">
         <Outlet />
         <Snackbar
           open={snackbarOpen}
