@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,15 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Grid, IconButton, Menu, MenuItem } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MissingPiecesService from "../../services/missingPiecesService";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 
 const PiecesTable = ({ missingPieces, setMissingPieces }) => {
   const missingPiecesService = new MissingPiecesService();
-
-  console.log(missingPieces);
 
   async function handleDelete(pieceId) {
     await missingPiecesService.delete(pieceId);

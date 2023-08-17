@@ -3,30 +3,32 @@ import MissingPiecesService from "../services/missingPiecesService";
 import { Grid } from "@mui/material";
 import PiecesTable from "../components/MissingPieces/PiecesTable";
 import { renderSpinner } from "../Helpers/functions";
+import { useQuery } from "react-query";
 
 const MissingPiecesPage = () => {
   const missingPiecesService = new MissingPiecesService();
+  const { data, isLoading } = useQuery("missing-pieces", () =>
+    missingPiecesService.index()
+  );
 
   const [missingPieces, setMissingPieces] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function getMissingPieces() {
-      setMissingPieces(await missingPiecesService.index());
-      setLoading(false);
+    if (!isLoading) {
+      setMissingPieces(data);
     }
-    getMissingPieces();
-  }, []);
+  }, [data, isLoading]);
+
+  if (isLoading) {
+    return renderSpinner();
+  }
+
   return (
     <Grid container justifyContent={"center"}>
-      {loading ? (
-        renderSpinner()
-      ) : (
-        <PiecesTable
-          missingPieces={missingPieces}
-          setMissingPieces={setMissingPieces}
-        />
-      )}
+      <PiecesTable
+        missingPieces={missingPieces}
+        setMissingPieces={setMissingPieces}
+      />
     </Grid>
   );
 };
