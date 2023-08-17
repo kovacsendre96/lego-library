@@ -7,22 +7,24 @@ import Filter from "../components/MainPage/Filter";
 import LegoSetService from "../services/legoSetService";
 import logo from "../public/assets/logo.png";
 import { renderSpinner } from "../Helpers/functions";
+import { useQuery } from "react-query";
 
 const MainPage = () => {
-  const legoSetService = new LegoSetService();
-
   const [legoData, setLegoData] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  const legoSetService = new LegoSetService();
+  const { data, isLoading } = useQuery("lego-sets", legoSetService.index);
 
   useEffect(() => {
-    async function getLegoSets() {
-      const legoSets = await legoSetService.index();
-      localStorage.setItem("lego-sets", JSON.stringify(legoSets));
-      setLoading(false);
-      setLegoData(legoSets);
+    if (!isLoading) {
+      setLegoData(data);
+      localStorage.setItem("lego-sets", JSON.stringify(data));
     }
-    getLegoSets();
-  }, []);
+  }, [data, isLoading]);
+
+  if (isLoading) {
+    return renderSpinner();
+  }
 
   return (
     <Grid container justifyContent={"center"}>
@@ -64,17 +66,10 @@ const MainPage = () => {
           <AddNewSet legoData={legoData} setLegoData={setLegoData} />
         </Grid>
       </Grid>
-      {loading ? (
-        renderSpinner()
-      ) : (
-        <Grid container justifyContent={"center"}>
-          {legoData.length > 0 ? (
-            <LegoList legoData={legoData} />
-          ) : (
-            "Nincs adat"
-          )}
-        </Grid>
-      )}
+
+      <Grid container justifyContent={"center"}>
+        {legoData.length > 0 ? <LegoList legoData={legoData} /> : "Nincs adat"}
+      </Grid>
     </Grid>
   );
 };
