@@ -67,7 +67,6 @@ const LegoDetailsPage = () => {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        (
         <>
           <p className="lego-font">{legoSet.set_name}</p>
           <Grid container justifyContent={"center"}>
@@ -155,7 +154,6 @@ const LegoDetailsPage = () => {
             setLegoSet={setLegoSet}
           />
         </>
-        )
       </Grid>
     );
   }
