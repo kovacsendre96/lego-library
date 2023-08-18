@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.91468fe7.css",
-    "main.js": "/static/js/main.74a94d71.js",
+    "main.css": "/static/css/main.5451fe20.css",
+    "main.js": "/static/js/main.a40aa159.js",
     "static/media/logo.png": "/static/media/logo.425e62c1dc2eca387483.png",
     "static/media/Lego Spinner.gif": "/static/media/Lego Spinner.4549a8b4d2af48232ee2.gif",
+    "static/media/Fredoka-VariableFont_wdth,wght.ttf": "/static/media/Fredoka-VariableFont_wdth,wght.1cfa1639746e014c46fc.ttf",
+    "static/media/figure_with_checkered_flag.png": "/static/media/figure_with_checkered_flag.4645b57ccb7bc27a0d7e.png",
+    "static/media/figure_with_enlarger.png": "/static/media/figure_with_enlarger.b6be8e74e5444f1ccd67.png",
+    "static/media/figure.png": "/static/media/figure.1ea88dd1c0f0a3a519b8.png",
     "static/media/Legothick.ttf": "/static/media/Legothick.f552ac9867964e9901b4.ttf",
     "index.html": "/index.html",
-    "main.91468fe7.css.map": "/static/css/main.91468fe7.css.map",
-    "main.74a94d71.js.map": "/static/js/main.74a94d71.js.map"
+    "main.5451fe20.css.map": "/static/css/main.5451fe20.css.map",
+    "main.a40aa159.js.map": "/static/js/main.a40aa159.js.map"
   },
   "entrypoints": [
-    "static/css/main.91468fe7.css",
-    "static/js/main.74a94d71.js"
+    "static/css/main.5451fe20.css",
+    "static/js/main.a40aa159.js"
   ]
 }
