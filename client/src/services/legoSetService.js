@@ -3,7 +3,7 @@ import { setSnackbar } from "../state/snackbar";
 export default class LegoSetService {
   async index() {
     return axios
-      .get("http://localhost:8000/api/lego-sets")
+      .get("api/lego-sets")
       .then((response) => response.data)
       .catch((error) => {
         setSnackbar(error.message, "error");
@@ -13,7 +13,7 @@ export default class LegoSetService {
 
   async store(legoSet) {
     return axios
-      .post("http://localhost:80000/api/lego-sets", legoSet)
+      .post("api/lego-sets", legoSet)
       .then((response) => {
         setSnackbar("Sikeres mentés", "success");
         return response.data;
@@ -26,7 +26,7 @@ export default class LegoSetService {
 
   async update(id, data) {
     return axios
-      .patch(`http://localhost:8000/api/lego-sets/${id}`, data)
+      .patch(`api/lego-sets/${id}`, data)
       .then((response) => {
         setSnackbar("Sikeres mentés", "success");
         return response.data;
@@ -39,7 +39,7 @@ export default class LegoSetService {
 
   async delete(id) {
     return axios
-      .delete(`http://localhost:80000/api/lego-sets/${id}`)
+      .delete(`/api/lego-sets/${id}`)
       .then((response) => {
         setSnackbar("Sikeres törlés", "success");
         return response.data;
@@ -52,7 +52,7 @@ export default class LegoSetService {
 
   async show(id) {
     return axios
-      .get(`http://localhost:8000/api/lego-sets/${id}`)
+      .get(`api/lego-sets/${id}`)
       .then((response) => response.data)
       .catch((error) => {
         setSnackbar(error.message, "error");
