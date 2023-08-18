@@ -11,6 +11,11 @@
     src: url(../public/fonts/Legothick.ttf);
 }
 
+@font-face {
+    font-family: fredoka;
+    src: url(../public/fonts/Fredoka-VariableFont_wdth\,wght.ttf);
+}
+
 
 .nav {
 
