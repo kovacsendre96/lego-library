@@ -1,21 +1,38 @@
 import { Alert, Grid, Snackbar } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useGlobalState } from "../state/snackbar";
 import Nav from "../components/Nav";
 import SubNavBreadcrumbs from "./SubNavBreadcrumbs";
+import { useEffect } from "react";
 
 const MainLayout = () => {
   const [snackbarOpen, setSnackbarOpen] = useGlobalState("snackbarOpen");
   const [snackbarMesage] = useGlobalState("snackbarMessage");
   const [snackbarType] = useGlobalState("snackbarType");
 
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+
+      navigate("/landing");
+    }
+  }, []);
+
   return (
     <>
-      <div className="z-10 fixed left-0 top-0 w-full">
-        <Nav />
-        <SubNavBreadcrumbs />
-      </div>
-      <Grid className="mt-[110px]">
+      {location.pathname !== "/landing" ?
+        <>
+          <div className="z-10 fixed left-0 top-0 w-full">
+            <Nav />
+            <SubNavBreadcrumbs />
+          </div>
+          <div className="h-[110px]"></div>
+        </>
+        : null}
+      <Grid>
         <Outlet />
         <Snackbar
           open={snackbarOpen}

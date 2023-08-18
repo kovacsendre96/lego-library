@@ -4,13 +4,20 @@ import LegoSetsPage from "../views/LegoSetsPage";
 import SetDetailsPage from "../views/SetDetailsPage";
 import MissingPiecesPage from "../views/MissingPiecesPage";
 import MainLayout from "../Layout/MainLayout";
+import LandingPage from "../views/LandingPage";
 
 export const router = createBrowserRouter([
+
   {
     path: "/",
     element: <MainLayout />,
 
+
     children: [
+      {
+        path: "/landing",
+        element: <LandingPage />,
+      },
       {
         path: "lego-sets",
         element: <LegoSetsPage />,
