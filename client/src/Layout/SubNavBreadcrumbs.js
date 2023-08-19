@@ -21,7 +21,7 @@ const SubNavBreadcrumbs = () => {
   }
 
   return (
-    <Stack spacing={2} className="py-3 px-4 bg-[#9cb7d1]">
+    <Stack className="py-3 px-4 bg-transparent" >
       <Breadcrumbs
         className="!text-white"
         separator="/"
@@ -29,7 +29,7 @@ const SubNavBreadcrumbs = () => {
       >
         {breadcrumbs}
       </Breadcrumbs>
-    </Stack>
+    </Stack >
   );
 };
 
