@@ -1,38 +1,16 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea, Grid, Tooltip } from "@mui/material";
 
 const LegoCard = ({ legoData }) => {
   const { banner, set_name, set_id, year_released } = legoData;
   return (
-    <Card className="m-2 w-[250px] h-[300px]">
-      <CardActionArea>
-        <CardMedia
-          style={{ objectFit: "contain", maxHeight: 150 }}
-          component="img"
-          image={banner}
-          alt={set_name}
-        />
-        <CardContent>
-          <Tooltip title={set_name} placement="top">
-            <Typography
-              noWrap
-              gutterBottom
-              variant="h5"
-              component="div"
-              align="center"
-            >
-              {set_name}
-              <div>{`# ${set_id}`}</div>
-              <div>{year_released}</div>
-            </Typography>
-          </Tooltip>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <div className="relative bg-center bg-cover rounded-2xl w-[300px] sm:w-[450px] h-[250px] shadow-lg hover:scale-105 duration-150 hover:shadow-2xl" style={{ backgroundImage: `url(${banner})` }}>
+      <div className="absolute bg-[rgba(0,0,0,.7)] text-white flex flex-col  w-full justify-start items-center rounded-b-2xl bottom-0 font-bold tracking-widest">
+        <h3 className="py-1">{set_name}</h3>
+        <h3 className="py-1">#{set_id}</h3>
+        <h3 className="py-1">{year_released}</h3>
+      </div>
+    </div>
+
   );
 };
 

@@ -5,7 +5,6 @@ import LegoList from "../components/MainPage/LegoList";
 import Sort from "../components/MainPage/Sort";
 import Filter from "../components/MainPage/Filter";
 import LegoSetService from "../services/legoSetService";
-import logo from "../public/assets/logo.png";
 import { renderSpinner } from "../Helpers/functions";
 import { useQuery } from "react-query";
 
@@ -28,13 +27,11 @@ const MainPage = () => {
 
   return (
     <Grid container justifyContent={"center"}>
-      <img src={logo} className="w-[250px]" alt="logo" />
       <Grid
         container
         justifyContent={"space-around"}
         alignItems={"center"}
-        component={Paper}
-        className="m-4"
+        className="bg-gradient-to-r from-[#FBC620] via-[#FADD8D] to-[#FBC620] m-0 p-6"
       >
         <Grid
           item
@@ -46,14 +43,8 @@ const MainPage = () => {
           {legoData.length > 0 && (
             <Sort legoData={legoData} setLegoData={setLegoData} />
           )}
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
+
+
           <Filter legoData={legoData} setLegoData={setLegoData} />
         </Grid>
         <Grid
@@ -63,8 +54,8 @@ const MainPage = () => {
           justifyContent={"space-around"}
           alignItems={"center"}
         >
-          <AddNewSet legoData={legoData} setLegoData={setLegoData} />
-        </Grid>
+{/*           <AddNewSet legoData={legoData} setLegoData={setLegoData} />
+ */}        </Grid>
       </Grid>
 
       <Grid container justifyContent={"center"}>

@@ -16,7 +16,32 @@
     src: url(../public/fonts/Fredoka-VariableFont_wdth\,wght.ttf);
 }
 
+*{
+    font-family: fredoka !important;
+}
 
+.MuiFormControl-root>* {
+    font-weight: 500;
+    color: black !important;
+}
+
+.MuiFormControl-root> {
+   border: 2px solid #FBC620;
+}
+
+.MuiOutlinedInput-root>fieldset {
+    border: 2px solid black;
+}
+.MuiOutlinedInput-root>fieldset:focus {
+    border-color: #FBC620 !important;
+}
+
+.MuiOutlinedInput-root>.MuiInputAdornment-root>svg {
+    color: black !important;
+}
+.MuiOutlinedInput-notchedOutline {
+ border-color: black !important;   
+}
 .nav {
 
     height: 60px;

@@ -31,7 +31,7 @@ const LandingPage = () => {
                     />
                 </div>
 
-                <h2 className="px-2 mx-auto mt-[100px] text-white text-center w-full md:w-1/2 lg:w-1/3 font-[fredoka] text-2xl">Üdvözöllek a Lego Library-ben, a Lego készletek szervezésének és
+                <h2 className="px-2 mx-auto mt-[100px] text-white text-center w-full md:w-1/2 lg:w-1/3 text-2xl">Üdvözöllek a Lego Library-ben, a Lego készletek szervezésének és
                     kezelésének eszközében.
                 </h2>
 
@@ -44,7 +44,7 @@ const LandingPage = () => {
                         alt="Blurred Background"
                         className="h-[200px] mb-2 md:h-[300px] md:w-[250px] object-cover"
                     />
-                    <div className="flex flex-col mx-auto text-center w-full p-5 md:w-1/2 font-[fredoka] text-lg md:text-2xl">
+                    <div className="flex flex-col mx-auto text-center w-full p-5 md:w-1/2 text-lg md:text-2xl">
                         <h2 className="font-bold mb-"
                         >
                             Lego gyűjteményeid egy helyen
@@ -59,7 +59,7 @@ const LandingPage = () => {
             </Grid>
             <Grid className="min-h-[450px] bg-white flex items-center justify-center">
                 <div className="container flex flex-col-reverse md:flex-row p-5 justify-center items-center">
-                    <div className="flex flex-col mx-auto p-5 text-center w-full md:w-1/2 font-[fredoka] text-lg md:text-2xl">
+                    <div className="flex flex-col mx-auto p-5 text-center w-full md:w-1/2 text-lg md:text-2xl">
                         <h2 className="font-bold mb-"
                         >
                             Elveszett darabok rögzítése.
@@ -84,7 +84,7 @@ const LandingPage = () => {
                         alt="Blurred Background"
                         className="h-[200px] mb-2 md:h-[350px] w-[250px] object-cover"
                     />
-                    <div className="flex flex-col mx-auto text-center w-full p-5 md:w-1/2 font-[fredoka] text-lg md:text-2xl">
+                    <div className="flex flex-col mx-auto text-center w-full p-5 md:w-1/2 text-lg md:text-2xl">
                         <h2 className="font-bold mb-"
                         >
                             Kezdjük el!

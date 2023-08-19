@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import SubNavBreadcrumbs from "./SubNavBreadcrumbs";
 import { useEffect } from "react";
 
+
 const MainLayout = () => {
   const [snackbarOpen, setSnackbarOpen] = useGlobalState("snackbarOpen");
   const [snackbarMesage] = useGlobalState("snackbarMessage");
@@ -25,14 +26,14 @@ const MainLayout = () => {
     <>
       {location.pathname !== "/landing" ?
         <>
-          <div className="z-10 fixed left-0 top-0 w-full">
+          <div className="z-10 fixed left-0 top-0 w-full bg-gradient-to-r from-black to-[#2D3436]">
             <Nav />
-            <SubNavBreadcrumbs />
+            {/* <SubNavBreadcrumbs /> */}
           </div>
-          <div className="h-[110px]"></div>
+          <div className="h-[110px] bg-gradient-to-r from-black to-[#2D3436]"></div>
         </>
         : null}
-      <Grid>
+      <Grid className="">
         <Outlet />
         <Snackbar
           open={snackbarOpen}

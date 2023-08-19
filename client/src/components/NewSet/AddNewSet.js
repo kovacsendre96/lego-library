@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import NewSetForm from "./NewSetForm.js";
+import StyledButton from "../StyledButton.js";
 
 const AddNewSet = ({
   legoData,
@@ -19,9 +20,7 @@ const AddNewSet = ({
 
   return (
     <React.Fragment>
-      <Button
-        variant="contained"
-        startIcon={<AddIcon />}
+      <StyledButton
         children={"Új hozzáadás"}
         onClick={handleButtonClick}
         className="margin-sm"
