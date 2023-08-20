@@ -5,6 +5,7 @@ import SetDetailsPage from "../views/SetDetailsPage";
 import MissingPiecesPage from "../views/MissingPiecesPage";
 import MainLayout from "../Layout/MainLayout";
 import LandingPage from "../views/LandingPage";
+import NewSetPage from "../views/NewSetPage";
 
 export const router = createBrowserRouter([
 
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "lego-sets",
         element: <LegoSetsPage />,
+      },
+      {
+        path: "new-set",
+        element: <NewSetPage />,
       },
       {
         path: "lego-sets/:id",
