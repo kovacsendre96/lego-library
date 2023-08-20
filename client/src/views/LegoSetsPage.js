@@ -1,6 +1,5 @@
-import { Grid, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import AddNewSet from "../components/NewSet/AddNewSet";
 import LegoList from "../components/MainPage/LegoList";
 import Sort from "../components/MainPage/Sort";
 import Filter from "../components/MainPage/Filter";
@@ -31,7 +30,7 @@ const MainPage = () => {
         container
         justifyContent={"space-around"}
         alignItems={"center"}
-        className="bg-gradient-to-r from-[#FBC620] via-[#FADD8D] to-[#FBC620] m-0 p-6"
+        className="bg-yellow-gradient m-0 p-6"
       >
         <Grid
           item
@@ -54,7 +53,7 @@ const MainPage = () => {
           justifyContent={"space-around"}
           alignItems={"center"}
         >
-{/*           <AddNewSet legoData={legoData} setLegoData={setLegoData} />
+          {/*           <AddNewSet legoData={legoData} setLegoData={setLegoData} />
  */}        </Grid>
       </Grid>
 
