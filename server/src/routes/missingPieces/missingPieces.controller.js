@@ -4,7 +4,7 @@ function index(req, res) {
   const params = req.params;
   let sql = "SELECT * FROM missing_pieces";
   if (params.id) {
-    sql = `SELECT * FROM missing_pieces WHERE set_id = '${params.id}'`;
+    sql = `SELECT * FROM missing_pieces WHERE set_num = '${params.id}'`;
   }
   db.query(sql, (error, result) => {
     if (error) {

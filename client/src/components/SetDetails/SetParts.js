@@ -117,8 +117,9 @@ const SetParts = ({ set_id }) => {
           onClick={() => setAddMissingPartsModal(true)}
         />
       </Grid>
-      <Grid container direction={"column"} className="h-[500px]">
+      <Grid container direction={"column"} className="h-screen">
         <DataGrid
+          className="h-full"
           loading={rows.length === 0}
           rows={rows}
           columns={columns}

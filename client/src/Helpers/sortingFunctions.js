@@ -77,23 +77,23 @@ export const sortByType = (legoData, sortDirection, dataKey) => {
   let sortArrayByType = takeOutOfTheArray(legoData, dataKey);
 
   switch (dataKey) {
-    case "year_released":
+    case "year":
       sortResult = sortByKey(
         sortArrayByType,
         sortDirection,
         legoData,
-        "year_released"
+        "year"
       );
       break;
     case "name":
       sortResult = sortyByName(sortArrayByType, sortDirection, legoData);
       break;
-    case "number_of_pieces":
+    case "num_parts":
       sortResult = sortByKey(
         sortArrayByType,
         sortDirection,
         legoData,
-        "number_of_pieces"
+        "num_parts"
       );
       break;
     case "max_price":

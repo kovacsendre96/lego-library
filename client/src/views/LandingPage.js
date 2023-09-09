@@ -84,13 +84,13 @@ const LandingPage = () => {
                         alt="Blurred Background"
                         className="h-[200px] mb-2 md:h-[350px] w-[250px] object-cover"
                     />
-                    <div className="flex flex-col mx-auto text-center w-full p-5 md:w-1/2 text-lg md:text-2xl">
+                    <div className="flex items-center flex-col mx-auto text-center w-full p-5 md:w-1/2 text-lg md:text-2xl">
                         <h2 className="font-bold mb-"
                         >
                             Kezdjük el!
                         </h2>
                         <span>
-                            Akár tapasztalt Leog építő vagy, akár csak most kezded, a
+                            Akár tapasztalt Lego építő vagy, akár csak most kezded, a
                             Lego Library tökéletes eszköz arra, hogy nyomon követhesd a
                             gyűjteményedet és rendezett maradj.
                         </span>

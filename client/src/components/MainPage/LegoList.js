@@ -12,7 +12,7 @@ const LegoList = ({ legoData }) => {
       <Grid container justifyContent="center">
         {legoData.map((data) => {
           return (
-            <Link key={data.set_id} className="m-3" to={`${data.set_id}`}>
+            <Link key={data.set_num} className="m-3" to={`${data.set_num}`}>
               <LegoCard legoData={data} />
             </Link>
           );

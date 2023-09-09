@@ -25,17 +25,17 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  const sql = `SELECT * FROM lego_sets WHERE set_id = '${req.params.id}'`;
+  const sql = `SELECT * FROM lego_sets WHERE set_num = '${req.params.id}'`;
   db.query(sql, (error, result) => {
     if (error) {
       throw error;
     }
-    return res.status(200).json(result[0]);
+    return res.status(200).json(result[0] ?? null);
   });
 }
 
 function deleteLegoSet(req, res) {
-  const sql = `DELETE  FROM lego_sets WHERE set_id = '${req.params.id}'`;
+  const sql = `DELETE  FROM lego_sets WHERE set_num = '${req.params.id}'`;
   console.log(sql);
   db.query(sql, (error, result) => {
     if (error) {
@@ -46,7 +46,7 @@ function deleteLegoSet(req, res) {
 }
 
 function update(req, res) {
-  const sql = `UPDATE lego_sets SET ? WHERE set_id = '${req.params.id}'`;
+  const sql = `UPDATE lego_sets SET ? WHERE set_num = '${req.params.id}'`;
   const body = req.body;
   const legoSet = new LegoSet(body);
   console.log(sql);

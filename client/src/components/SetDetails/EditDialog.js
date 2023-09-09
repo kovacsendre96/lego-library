@@ -13,10 +13,6 @@ import {
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import DateRangeIcon from "@mui/icons-material/DateRange";
-import ExtensionIcon from "@mui/icons-material/Extension";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import TagIcon from "@mui/icons-material/Tag";
 import PaidIcon from "@mui/icons-material/Paid";
 import { useFormik } from "formik";
 import { addLegoSetSchema } from "../../validations/addLegoSetYup";
@@ -25,44 +21,14 @@ import { useParams } from "react-router-dom";
 
 const inputObjects = [
   {
-    icon: <LocalOfferIcon />,
-    name: "set_name",
-    label: "Szett neve",
-    type: "text",
-  },
-  {
-    icon: <TagIcon />,
-    name: "set_id",
-    label: "Szett azonosító",
-    type: "text",
-  },
-  {
-    icon: <ExtensionIcon />,
-    name: "number_of_pieces",
-    label: "Elemek száma",
-    type: "number",
-  },
-  {
-    icon: <DateRangeIcon />,
-    name: "year_released",
-    label: "Megjelenés dátuma",
-    type: "number",
-  },
-  {
     icon: <InsertPhotoIcon />,
-    name: "banner",
-    label: "Főkép",
-    type: "text",
-  },
-  {
-    icon: <InsertPhotoIcon />,
-    name: "box",
+    name: "box_img_url",
     label: "Kép a dobozról",
     type: "text",
   },
   {
     icon: <InsertPhotoIcon />,
-    name: "real_picture",
+    name: "real_picture_img_url",
     label: "Élőkép",
     type: "text",
   },
@@ -85,41 +51,34 @@ const EditDialog = ({
   setOpenEditDialog,
   legoSet,
   setLegoSet,
+  legoDataFromMyList,
+  setLegoDataFromMyList
 }) => {
   const [loading, setLoading] = useState(true);
   const legoSetService = new LegoSetService();
   const { id } = useParams();
-
   const formik = useFormik({
     initialValues: {
-      set_name: "",
-      set_id: "",
-      number_of_pieces: "",
-      year_released: "",
-      banner: "",
-      box: "",
-      real_picture: "",
+      box_img_url: "",
+      real_picture_img_url: "",
       min_price: "",
       max_price: "",
     },
     validationSchema: addLegoSetSchema,
     onSubmit: (values) => {
-      legoSetService.update(id, values);
-      setLegoSet(values);
+      const updatedLegoSet = { ...legoDataFromMyList, ...values }
+      legoSetService.update(id, updatedLegoSet);
+      setLegoSet(updatedLegoSet);
+      setLegoDataFromMyList(updatedLegoSet);
       setOpenEditDialog(false);
     },
   });
 
   useEffect(() => {
-    formik.setFieldValue("set_id", legoSet.set_id ?? "");
-    formik.setFieldValue("set_name", legoSet.set_name ?? "");
-    formik.setFieldValue("number_of_pieces", legoSet.number_of_pieces ?? "");
-    formik.setFieldValue("year_released", legoSet.year_released ?? "");
-    formik.setFieldValue("banner", legoSet.banner ?? "");
-    formik.setFieldValue("box", legoSet.box ?? "");
-    formik.setFieldValue("real_picture", legoSet.real_picture ?? "");
-    formik.setFieldValue("min_price", legoSet.min_price ?? "");
-    formik.setFieldValue("max_price", legoSet.max_price ?? "");
+    formik.setFieldValue("box_img_url", legoDataFromMyList?.box_img_url ?? "");
+    formik.setFieldValue("real_picture_img_url", legoDataFromMyList?.real_picture_img_url ?? "");
+    formik.setFieldValue("min_price", legoDataFromMyList?.min_price ?? "");
+    formik.setFieldValue("max_price", legoDataFromMyList?.max_price ?? "");
     setLoading(false);
   }, []);
 
@@ -165,7 +124,7 @@ const EditDialog = ({
                       />
 
                       {formik.touched[input.name] &&
-                      formik.errors[input.name] ? (
+                        formik.errors[input.name] ? (
                         <FormHelperText>
                           {formik.errors[input.name]}
                         </FormHelperText>

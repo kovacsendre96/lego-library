@@ -25,6 +25,13 @@
     color: black !important;
 }
 
+.MuiFormControl-root>.MuiFormHelperText-root {
+    color: red !important;
+}
+.MuiFormControl-root>.MuiFormLabel-root {
+    color: inherit !important;
+}
+
 .MuiFormControl-root> {
    border: 2px solid #FBC620;
 }
@@ -137,7 +144,7 @@ p {
 
 .details-icon {
     font-size: 3rem !important;
-    color: gray;
+    color: #FBC620;
 }
 
 .details-box {

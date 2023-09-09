@@ -33,10 +33,10 @@ const Nav = () => {
     return (
       <>
         <Link className="link m-2" to={"/lego-sets"}>
-          <MenuItem style={{ color: isActiveMenu("/lego-sets") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Készlet lista</MenuItem>
+          <MenuItem style={{ color: isActiveMenu("/lego-sets") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Saját lista</MenuItem>
         </Link>
         <Link className="link m-2" to={"/new-set"}>
-          <MenuItem style={{ color: isActiveMenu("/new-set") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Hozzáadás</MenuItem>
+          <MenuItem style={{ color: isActiveMenu("/new-set") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Keresés</MenuItem>
         </Link>
         <Link className="link m-2" to={"/missing-pieces"}>
           <MenuItem style={{ color: isActiveMenu("/missing-pieces") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Hiányzó elemek</MenuItem>
