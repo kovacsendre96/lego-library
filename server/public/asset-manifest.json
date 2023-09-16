@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.ed3b1c53.css",
-    "main.js": "/static/js/main.36f1db25.js",
+    "main.css": "/static/css/main.7dd1a440.css",
+    "main.js": "/static/js/main.78e4b162.js",
     "static/media/logo.png": "/static/media/logo.425e62c1dc2eca387483.png",
     "static/media/Lego Spinner.gif": "/static/media/Lego Spinner.4549a8b4d2af48232ee2.gif",
     "static/media/Fredoka-VariableFont_wdth,wght.ttf": "/static/media/Fredoka-VariableFont_wdth,wght.1cfa1639746e014c46fc.ttf",
     "static/media/figure_with_checkered_flag.png": "/static/media/figure_with_checkered_flag.4645b57ccb7bc27a0d7e.png",
     "static/media/figure_with_enlarger.png": "/static/media/figure_with_enlarger.b6be8e74e5444f1ccd67.png",
     "static/media/figure.png": "/static/media/figure.1ea88dd1c0f0a3a519b8.png",
+    "static/media/error-not-found-404-lego.jpg": "/static/media/error-not-found-404-lego.a2b1f210e1f774d1bca0.jpg",
     "static/media/Legothick.ttf": "/static/media/Legothick.f552ac9867964e9901b4.ttf",
     "index.html": "/index.html",
-    "main.ed3b1c53.css.map": "/static/css/main.ed3b1c53.css.map",
-    "main.36f1db25.js.map": "/static/js/main.36f1db25.js.map"
+    "main.7dd1a440.css.map": "/static/css/main.7dd1a440.css.map",
+    "main.78e4b162.js.map": "/static/js/main.78e4b162.js.map"
   },
   "entrypoints": [
-    "static/css/main.ed3b1c53.css",
-    "static/js/main.36f1db25.js"
+    "static/css/main.7dd1a440.css",
+    "static/js/main.78e4b162.js"
   ]
 }
