@@ -47,7 +47,7 @@ const Nav = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} className="w-full p-2">
+      <Box id="navBar" sx={{ flexGrow: 1 }} className="w-full p-2">
         {sidebarOpen &&
           <div className="w-screen animate-slide-down h-[350px]">
             <div className="h-[116px] flex justify-between pb-4">

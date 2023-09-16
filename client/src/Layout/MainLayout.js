@@ -1,4 +1,4 @@
-import { Alert, Grid, Snackbar } from "@mui/material";
+import { Alert, Container, Grid, Snackbar } from "@mui/material";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useGlobalState } from "../state/snackbar";
 import Nav from "../components/Nav";
@@ -26,7 +26,7 @@ const MainLayout = () => {
     <>
       {location.pathname !== "/landing" ?
         <>
-          <div className="z-10 fixed left-0 top-0 w-full bg-gradient-to-r from-black to-[#2D3436]">
+          <div className="z-10 fixed left-0 w-full top-0  mx-auto bg-gradient-to-r from-black to-[#2D3436]">
             <Nav />
             {/* <SubNavBreadcrumbs /> */}
           </div>

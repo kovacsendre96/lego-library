@@ -1,9 +1,11 @@
 class MissingPiece {
-  piece_id = "";
-  set_id = "";
-  image = "";
+  id = "";
+  part_num = "";
+  img = "";
   quantity = 0;
   name = "";
+  link = "";
+  color = "";
   constructor(params) {
     Object.assign(this, params);
   }

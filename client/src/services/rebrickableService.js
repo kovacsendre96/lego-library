@@ -21,10 +21,10 @@ export default class RebrickableService {
       .catch((error) => console.log(error));
   }
 
-  async getSetParts(setId) {
+  async getSetParts(setId, page, pageSize) {
     return axios
       .get(
-        `${this.BASE_URL}/api/v3/lego/sets/${setId}/parts?key=${process.env.REACT_APP_REBRICKABLE_TOKEN}`
+        `${this.BASE_URL}/api/v3/lego/sets/${setId}/parts?key=${process.env.REACT_APP_REBRICKABLE_TOKEN}&page=${page}&page_size=${pageSize}`
       )
       .then((response) => response.data)
       .catch((error) => console.log(error));

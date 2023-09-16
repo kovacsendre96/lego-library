@@ -17,7 +17,7 @@ import MissingPieces from "../components/MissingPieces/MissingPieces";
 import SetParts from "../components/SetDetails/SetParts";
 import LegoSetService from "../services/legoSetService";
 import { useParams, useNavigate } from "react-router-dom";
-import EditDialog from "../components/SetDetails/EditDialog";import { renderSpinner } from "../Helpers/functions";
+import EditDialog from "../components/SetDetails/EditDialog"; import { renderSpinner } from "../Helpers/functions";
 import RebrickableService from "../services/rebrickableService";
 import StyledButton from "../components/StyledButton";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
@@ -154,7 +154,7 @@ const LegoDetailsPage = () => {
               <StyledButton className={"m-2"} icon={<AddIcon />} onClick={handleSaveToList} children={'Mentés saját listába'} />
             }
           </div>
-          {/*        <SetParts set_id={legoSet.set_num} /> */}
+          <SetParts set_id={legoSet.set_num} />
           {missingPiecesDialog && (
             <MissingPieces
               missingPiecesDialog={missingPiecesDialog}

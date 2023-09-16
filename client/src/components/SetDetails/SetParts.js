@@ -1,76 +1,66 @@
 import { useEffect, useState } from "react";
 import RebrickableService from "../../services/rebrickableService";
-import {
-  DataGrid,
-  GridLinkOperator,
-  GridToolbarQuickFilter,
-} from "@mui/x-data-grid";
-import { Button, Grid, Modal } from "@mui/material";
+import { Grid, IconButton, MenuItem, Modal, Pagination, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import MissingPiecesModal from "../MissingPieces/MissingPiecesModal";
-import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
 
 const SetParts = ({ set_id }) => {
   const [rows, setRows] = useState([]);
   const [clickedImage, setClickedImage] = useState();
   const [imageModalOpen, setImageModalOpen] = useState(false);
-  const [selectedParts, setSelectedParts] = useState([]);
+  const [selectedParts, setSelectedParts] = useState({});
   const [pageSize, setPageSize] = useState(50);
-  const [selectedRows, setSelectedRows] = useState([]);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
 
   const [addMissingPartsModal, setAddMissingPartsModal] = useState(false);
   const rebrickableService = new RebrickableService();
 
+  async function getParts(page, pageSize) {
+    const parts = await rebrickableService.getSetParts(set_id, page, pageSize);
+    const rowData = parts.results.map((part) => {
+      return {
+        img: part.part.part_img_url,
+        part_num: part.part.part_num,
+        id: part.id,
+        color: part.color.name,
+        name: part.part.name,
+        quantity: part.quantity,
+        link: part.part.part_url,
+      };
+    });
+    setCount(parts.count);
+    setRows(rowData);
+  }
+
   useEffect(() => {
-    async function getParts() {
-      const parts = await rebrickableService.getSetParts(set_id);
-      const rowData = parts.results.map((part) => {
-        return {
-          img: part.part.part_img_url,
-          part_num: part.part.part_num,
-          id: part.id,
-          color: part.color.name,
-          name: part.part.name,
-          quantity: part.quantity,
-          link: part.part.part_url,
-        };
-      });
-      setRows(rowData);
-    }
-    getParts();
+    getParts(page, pageSize);
   }, []);
+
+
 
   const columns = [
     {
-      field: "img",
-      headerName: "Kép",
-      width: 120,
-
-      renderCell: (params) => (
-        <img
-          onClick={() => handleImageClick(params.value)}
-          className="cursor-pointer object-contain	 h-[90px] w-[90px]"
-          alt={params.row.name}
-          src={params.value}
-        />
-      ),
-    },
-    { field: "part_num", headerName: "ID", width: 150 },
-    { field: "name", headerName: "Név", width: 350 },
-    { field: "quantity", headerName: "Darabszám", width: 150 },
-    {
-      field: "color",
-      headerName: "Szín",
-      width: 130,
+      field: "missing_piece", headerName: "Hozzáadás",
     },
     {
-      field: "link",
-      headerName: "Link",
-      width: 150,
-      renderCell: (params) => (
-        <a target="_blank" rel="noreferrer" href={params.value}>
-          További információ
-        </a>
-      ),
+      field: "img", headerName: "Kép",
+    },
+    {
+      field: "part_num", headerName: "ID",
+    },
+    {
+      field: "name", headerName: "Név",
+    },
+    {
+      field: "quantity", headerName: "Darabszám",
+    },
+    {
+      field: "color", headerName: "Szín",
+    },
+    {
+      field: "link", headerName: "Link",
     },
   ];
 
@@ -79,92 +69,94 @@ const SetParts = ({ set_id }) => {
     setClickedImage(image);
   }
 
-  function onSelectionModelChange(values) {
-    setSelectedParts(values);
-    const selectedRowsData = values.map((id) =>
-      rows.find((row) => row.id === id)
-    );
-    setSelectedRows(selectedRowsData);
+  function handlePaginationChange(event, value) {
+
+    setPage(value);
+    getParts(value, pageSize);
+  };
+
+  function handlePageSizeChange(e) {
+    const value = e.target.value;
+    setPageSize(value);
+    getParts(page, value);
   }
 
-  function QuickSearchToolbar() {
-    return (
-      <Box
-        sx={{
-          p: 0.5,
-          pb: 0,
-        }}
-      >
-        <GridToolbarQuickFilter
-          placeholder={"Keresés"}
-          quickFilterParser={(searchInput) =>
-            searchInput
-              .split(",")
-              .map((value) => value.trim())
-              .filter((value) => value !== "")
-          }
-        />
-      </Box>
-    );
+  function handleAddClick(part) {
+    setSelectedParts(part);
+    setAddMissingPartsModal(true)
   }
   return (
-    <Grid container>
-      <Grid item xs={12} sm={6} md={3}>
-        <Button
-          variant="contained"
-          children={`Hiányzó elemek hozzáadása (${selectedParts.length})`}
-          className="m-1"
-          onClick={() => setAddMissingPartsModal(true)}
-        />
-      </Grid>
-      <Grid container direction={"column"} className="h-screen">
-        <DataGrid
-          className="h-full"
-          loading={rows.length === 0}
-          rows={rows}
-          columns={columns}
-          pageSize={pageSize}
-          rowsPerPageOptions={[25, 50, 100]}
-          checkboxSelection
-          rowHeight={85}
-          selectionModel={selectedParts}
-          onSelectionModelChange={onSelectionModelChange}
-          onPageSizeChange={(value) => setPageSize(value)}
-          hideFooterSelectedRowCount={true}
-          disableSelectionOnClick
-          initialState={{
-            filter: {
-              filterModel: {
-                items: [],
-                quickFilterLogicOperator: GridLinkOperator.Or,
-              },
-            },
-          }}
-          components={{ Toolbar: QuickSearchToolbar }}
-        />
+    <Grid className="mt-10 relative" container>
+      <TableContainer component={Paper} className="!overflow-visible">
+        <div className="flex items-center justify-between w-full bg-yellow-gradient p-3 sticky z-10" style={{ top: document.getElementById("navBar").clientHeight }}>
+          <div className="flex items-center">
+            <Select className="mr-3" value={pageSize} onChange={handlePageSizeChange}>
+              <MenuItem disabled={Math.ceil(count / 10) < page ? true : false} value="10" >10</MenuItem>
+              <MenuItem disabled={Math.ceil(count / 25) < page ? true : false} value="25" >25</MenuItem>
+              <MenuItem disabled={Math.ceil(count / 50) < page ? true : false} value="50" >50</MenuItem>
+              <MenuItem disabled={Math.ceil(count / 100) < page ? true : false} value="100" >100</MenuItem>
+            </Select>
+            <h3>találtok száma: {rows.length}</h3>
+          </div>
+          <Pagination page={page} count={Math.ceil(count / pageSize)} onChange={handlePaginationChange} />
+        </div>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {columns.map(column =>
+              (<TableCell key={column.field}>
+                {column.headerName}
+              </TableCell>))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row, index) => (
+              <TableRow
+                key={`${row.name}-${index}`}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell onClick={() => handleAddClick(row)}>
+                  <IconButton>
+                    <AddIcon />
+                  </IconButton>
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  <img className="sm:h-20 sm:w-20 object-contain cursor-pointer" onClick={() => handleImageClick(row.img)} src={row.img} alt={row.name} />
 
-        <Modal
-          open={imageModalOpen}
-          onClose={() => setImageModalOpen(false)}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          className="w-full h-full flex items-center justify-center"
-        >
-          <img
-            onClick={() => setImageModalOpen(true)}
-            alt={clickedImage}
-            src={clickedImage}
-          />
-        </Modal>
+                </TableCell>
+                <TableCell align="right">{row.id}</TableCell>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.quantity}</TableCell>
+                <TableCell align="right">{row.color}</TableCell>
+                <TableCell align="right"><Link to={`${row.link}`} >További infó</Link></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
-        <MissingPiecesModal
-          selectedRows={selectedRows}
-          setSelectedParts={setSelectedParts}
-          addMissingPartsModal={addMissingPartsModal}
-          setAddMissingPartsModal={setAddMissingPartsModal}
-          setId={set_id}
+      <Modal
+        open={imageModalOpen}
+        onClose={() => setImageModalOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="w-full h-full flex items-center justify-center"
+      >
+        <img
+          className="cursor-pointer"
+          onClick={() => setImageModalOpen(true)}
+          alt={clickedImage}
+          src={clickedImage}
         />
-      </Grid>
+      </Modal>
+
+      <MissingPiecesModal
+        setSelectedParts={setSelectedParts}
+        selectedParts={selectedParts}
+        addMissingPartsModal={addMissingPartsModal}
+        setAddMissingPartsModal={setAddMissingPartsModal}
+        setId={set_id}
+      />
     </Grid>
   );
 };
