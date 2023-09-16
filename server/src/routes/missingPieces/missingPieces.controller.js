@@ -1,4 +1,5 @@
 const db = require("../../database/dbconfig");
+const MissingPiece = require("../../models/missingPiece.model");
 
 function index(req, res) {
   const params = req.params;
@@ -17,17 +18,15 @@ function index(req, res) {
 function store(req, res) {
   const body = req.body;
   const sql = "INSERT INTO missing_pieces SET ?";
-  body.forEach((piece) => {
-    console.log("....................piece");
-    console.log(piece);
-      db.query(sql, piece, (error, result) => {
-        if (error) {
-          throw error;
-        }
-      });
-    });
+  const missing_piece = new MissingPiece(body);
+  console.log(missing_piece);
+  db.query(sql, missing_piece, (error, result) => {
+    if (error) {
+      throw error;
+    }
+  });
 
-    return res.status(200).json(body);
+  return res.status(200).json(req.body);
 }
 
 function update(req, res) {
