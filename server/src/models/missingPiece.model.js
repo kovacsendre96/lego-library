@@ -6,6 +6,7 @@ class MissingPiece {
   name = "";
   link = "";
   color = "";
+  collected = false;
   constructor(params) {
     Object.assign(this, params);
   }

@@ -36,6 +36,7 @@ const MissingPiecesModal = ({
       name: selectedParts.name,
       link: selectedParts.link,
       color: selectedParts.color,
+      collected: false
     });
     setAddMissingPartsModal(false);
   }
