@@ -30,9 +30,9 @@ function store(req, res) {
 }
 
 function update(req, res) {
-  let sql = `UPDATE missing_pieces SET collected = 1 WHERE piece_id = ${req.params.piece_id}`;
+  let sql = `UPDATE missing_pieces SET collected = 1 WHERE id = ${req.params.id}`;
   if (!req.body.collected) {
-    sql = `UPDATE missing_pieces SET collected = 0 WHERE piece_id = ${req.params.piece_id}`;
+    sql = `UPDATE missing_pieces SET collected = 0 WHERE id = ${req.params.id}`;
   }
   db.query(sql, (error, result) => {
     if (error) {
@@ -44,7 +44,7 @@ function update(req, res) {
 }
 
 function deletePiece(req, res) {
-  const sql = `DELETE FROM missing_pieces WHERE piece_id = ${req.params.piece_id}`;
+  const sql = `DELETE FROM missing_pieces WHERE id = ${req.params.id}`;
   db.query(sql, (error, result) => {
     if (error) {
       throw error;

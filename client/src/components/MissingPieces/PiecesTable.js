@@ -18,7 +18,7 @@ const PiecesTable = ({ missingPieces, setMissingPieces }) => {
     await missingPiecesService.delete(pieceId);
 
     setMissingPieces(
-      missingPieces.filter((piece) => piece.piece_id !== pieceId)
+      missingPieces.filter((piece) => piece.id !== pieceId)
     );
   }
 
@@ -27,7 +27,7 @@ const PiecesTable = ({ missingPieces, setMissingPieces }) => {
 
     setMissingPieces(
       missingPieces.map((piece) => {
-        if (piece.piece_id === pieceId) {
+        if (piece.id === pieceId) {
           piece.collected = 1;
         }
         return piece;
@@ -40,7 +40,7 @@ const PiecesTable = ({ missingPieces, setMissingPieces }) => {
 
     setMissingPieces(
       missingPieces.map((piece) => {
-        if (piece.piece_id === pieceId) {
+        if (piece.id === pieceId) {
           piece.collected = 0;
         }
         return piece;
@@ -74,129 +74,129 @@ const PiecesTable = ({ missingPieces, setMissingPieces }) => {
           <TableBody>
             {missingPieces.length > 0
               ? missingPieces.map((missingPiece) => (
-                  <TableRow key={missingPiece.piece_id}>
-                    <TableCell
+                <TableRow key={missingPiece.id}>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    <img
                       style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
+                        height: 70,
+                        width: 70,
+                        objectFit: "contain",
                       }}
-                      align="left"
-                    >
-                      <img
-                        style={{
-                          height: 70,
-                          width: 70,
-                          objectFit: "contain",
-                        }}
-                        className="img-thumbnail"
-                        src={missingPiece.image}
-                        alt={missingPiece.name}
-                      />
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
-                    >
-                      {missingPiece.piece_id}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
-                    >
-                      {missingPiece.name}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
-                    >
-                      {missingPiece.quantity}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
-                    >
-                      {missingPiece.color}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
-                    >
-                      {Boolean(missingPiece.collected) ? "Igen" : "Nem"}
-                    </TableCell>
+                      className="img-thumbnail"
+                      src={missingPiece.img}
+                      alt={missingPiece.name}
+                    />
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    {missingPiece.id}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    {missingPiece.name}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    {missingPiece.quantity}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    {missingPiece.color}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    {Boolean(missingPiece.collected) ? "Igen" : "Nem"}
+                  </TableCell>
 
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                      align="left"
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                    align="left"
+                  >
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={() => handleDelete(missingPiece.id)}
+                      startIcon={<DeleteIcon />}
                     >
+                      Elem végleges törlése
+                    </Button>
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      backgroundColor: setColor(
+                        Boolean(missingPiece.collected)
+                      ),
+                    }}
+                  >
+                    {Boolean(missingPiece.collected) ? (
+                      <Button
+                        startIcon={<AssignmentTurnedInIcon />}
+                        variant="contained"
+                        onClick={() =>
+                          handleCancellationCollected(missingPiece.id, {
+                            collected: false,
+                          })
+                        }
+                      >
+                        Elem beszerzésének visszavonása
+                      </Button>
+                    ) : (
                       <Button
                         variant="contained"
-                        color="error"
-                        onClick={() => handleDelete(missingPiece.piece_id)}
-                        startIcon={<DeleteIcon />}
+                        onClick={() =>
+                          handleCollected(missingPiece.id, {
+                            collected: true,
+                          })
+                        }
                       >
-                        Elem végleges törlése
+                        Elem beszerezve
                       </Button>
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        backgroundColor: setColor(
-                          Boolean(missingPiece.collected)
-                        ),
-                      }}
-                    >
-                      {Boolean(missingPiece.collected) ? (
-                        <Button
-                          startIcon={<AssignmentTurnedInIcon />}
-                          variant="contained"
-                          onClick={() =>
-                            handleCancellationCollected(missingPiece.piece_id, {
-                              collected: false,
-                            })
-                          }
-                        >
-                          Elem beszerzésének visszavonása
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="contained"
-                          onClick={() =>
-                            handleCollected(missingPiece.piece_id, {
-                              collected: true,
-                            })
-                          }
-                        >
-                          Elem beszerezve
-                        </Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))
-              : ""}
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))
+              : <TableRow></TableRow>}
           </TableBody>
         </Table>
       </TableContainer>
