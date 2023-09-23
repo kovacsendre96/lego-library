@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
         element: <SetDetailsPage />,
       },
       {
+        path: "missing-pieces/:id",
+        element: <MissingPiecesPage />,
+      },
+      {
         path: "missing-pieces",
         element: <MissingPiecesPage />,
       },

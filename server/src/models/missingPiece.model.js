@@ -1,6 +1,6 @@
 class MissingPiece {
   id = "";
-  part_num = "";
+  set_num = "";
   img = "";
   quantity = 0;
   name = "";

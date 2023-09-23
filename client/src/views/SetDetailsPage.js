@@ -13,7 +13,6 @@ import Slider from "../components/SetDetails/Slider";
 import DetailsPageBottomBox from "../components/SetDetails/DetailsPageBottomBox";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import MissingPieces from "../components/MissingPieces/MissingPieces";
 import SetParts from "../components/SetDetails/SetParts";
 import LegoSetService from "../services/legoSetService";
 import { useParams, useNavigate } from "react-router-dom";
@@ -23,7 +22,7 @@ import StyledButton from "../components/StyledButton";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import AddIcon from '@mui/icons-material/Add';
 import LaunchIcon from '@mui/icons-material/Launch';
-
+import ExtensionIcon from '@mui/icons-material/Extension';
 
 
 const LegoDetailsPage = () => {
@@ -33,7 +32,6 @@ const LegoDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const [missingPiecesDialog, setMissingPiecesDialog] = useState(false);
 
   const navigate = useNavigate();
   const legoSetService = new LegoSetService();
@@ -111,36 +109,7 @@ const LegoDetailsPage = () => {
             legoDataFromMyList={legoDataFromMyList}
           />
 
-          {/*           <Grid container justifyContent={"center"} className="">
-            <Button
-              variant="contained"
-              startIcon={<EditIcon />}
-              children={"További adatok"}
-              onClick={() => {
-                setOpenEditDialog(true);
-              }}
-              className="margin-sm"
-            />
-            <Button
-              variant="contained"
-              children={"Hiányzó elemek"}
-              onClick={() => {
-                setMissingPiecesDialog(true);
-              }}
-              className="margin-sm"
-              startIcon={<ExtensionIcon />}
-            />
-            <Button
-              variant="contained"
-              startIcon={<DeleteIcon />}
-              children={"Törlés"}
-              color="error"
-              onClick={() => setOpenConfirmationDialog(true)}
-              className="margin-sm"
-            />
-          </Grid> */}
-
-          <div className="flex justify-center items-center w-full flex-col md:flex-row">
+          <div className="flex justify-center items-center flex-wrap w-full flex-col md:flex-row">
             <StyledButton className={"m-2"} icon={<LaunchIcon />} children={<a target="_blank" rel="noopener noreferrer" href={legoSet.set_url}>Ugrás a Rebrickable-re</a>} />
             {legoDataFromMyList
               ?
@@ -149,18 +118,15 @@ const LegoDetailsPage = () => {
                   setOpenEditDialog(true);
                 }} children={'További adatok megadása'} />
                 <StyledButton icon={<DeleteIcon />} className={"m-2"} onClick={() => setOpenConfirmationDialog(true)} children={'Törlés saját listából'} />
+                <StyledButton icon={<ExtensionIcon />} className={"m-2"} onClick={() => {
+                  navigate(`/missing-pieces/${legoSet.set_num}`);
+                }} children={'Hiányzó elemek'} />
               </>
               :
               <StyledButton className={"m-2"} icon={<AddIcon />} onClick={handleSaveToList} children={'Mentés saját listába'} />
             }
           </div>
           <SetParts set_id={legoSet.set_num} />
-          {missingPiecesDialog && (
-            <MissingPieces
-              missingPiecesDialog={missingPiecesDialog}
-              setMissingPiecesDialog={setMissingPiecesDialog}
-            />
-          )}
           <Dialog
             open={openConfirmationDialog}
             onClose={() => setOpenConfirmationDialog(false)}

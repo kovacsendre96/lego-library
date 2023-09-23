@@ -53,8 +53,7 @@ const MainPage = () => {
           justifyContent={"space-around"}
           alignItems={"center"}
         >
-          {/*           <AddNewSet legoData={legoData} setLegoData={setLegoData} />
- */}        </Grid>
+        </Grid>
       </Grid>
 
       <Grid container justifyContent={"center"}>

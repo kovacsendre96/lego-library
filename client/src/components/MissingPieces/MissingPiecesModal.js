@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -17,6 +16,7 @@ import {
 import SaveIcon from "@mui/icons-material/Save";
 import MissingPiecesService from "../../services/missingPiecesService";
 import { useState } from "react";
+import StyledButton from "../StyledButton";
 
 const MissingPiecesModal = ({
   selectedParts,
@@ -24,13 +24,13 @@ const MissingPiecesModal = ({
   setAddMissingPartsModal,
 }) => {
 
-  const [missingPieceCount, setMissingPieceCount] = useState(0);
+  const [missingPieceCount, setMissingPieceCount] = useState(1);
   const missingPiecesService = new MissingPiecesService();
 
   async function handleSave() {
     await missingPiecesService.store({
       id: selectedParts.id,
-      part_num: selectedParts.part_num,
+      set_num: selectedParts.set_num,
       img: selectedParts.img,
       quantity: missingPieceCount,
       name: selectedParts.name,
@@ -40,6 +40,8 @@ const MissingPiecesModal = ({
     });
     setAddMissingPartsModal(false);
   }
+
+
 
   return (
     <Dialog
@@ -78,7 +80,7 @@ const MissingPiecesModal = ({
                 <TableCell>{selectedParts.name}</TableCell>
                 <TableCell>{selectedParts.color}</TableCell>
                 <TableCell >
-                  <TextField value={missingPieceCount} onChange={(e) => setMissingPieceCount(e.target.value)} type="number" />
+                  <TextField autoFocus value={missingPieceCount} onChange={(e) => setMissingPieceCount(e.target.value)} type="number" />
                 </TableCell>
               </TableRow>
 
@@ -88,12 +90,12 @@ const MissingPiecesModal = ({
 
       </DialogContent>
       <DialogActions className="flex !justify-start">
-        <Button
+        <StyledButton
           onClick={handleSave}
           className="!m-3"
           children={"Mentés"}
           variant="contained"
-          startIcon={<SaveIcon />}
+          icon={<SaveIcon />}
         />
       </DialogActions>
     </Dialog>

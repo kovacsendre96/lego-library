@@ -58,10 +58,10 @@ const NewSetPage = () => {
 
     return (
 
-        <div className="w-full min-h-screen h-auto flex items-center flex-col">
-            <div className="w-full h-[120px] bg-yellow-gradient flex items-center justify-center">
+        <div className="w-full min-h-screen h-auto flex items-center flex-col mt-[116px]">
+            <div className="w-full h-[120px] bg-yellow-gradient flex items-center justify-center fixed top-[116px] z-10">
                 <div className="relative  w-[70%] max-w-xl">
-                    <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder="Kezdj el gépelni..." className="w-full rounded-2xl py-3 h-[70px] px-4 pr-10" />
+                    <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder="Név vagy azonosító Pl.: Castle" className="w-full rounded-2xl py-3 h-[70px] px-4 pr-10" />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                         <svg className="h-5 w-5 text-gray-400" fill="none" strokeLinecap="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M22 22l-6-6" />
