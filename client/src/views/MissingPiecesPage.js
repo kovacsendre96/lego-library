@@ -52,8 +52,8 @@ const MissingPiecesPage = () => {
     return renderSpinner();
   }
   return (
-    <Grid container justifyContent={"center"}>
-      <div className="w-full py-4 pl-2 bg-yellow-gradient fixed top-[116px] z-10">
+    <Grid className="relative" container justifyContent={"center"}>
+      <div className="w-full py-4 pl-2 bg-yellow-gradient sticky top-[116px]">
         <FormControl className="margin-sm input-width">
           <InputLabel id="filter">Szűrés</InputLabel>
           <Select

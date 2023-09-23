@@ -70,7 +70,7 @@ const PiecesTable = ({ missingPieces, setMissingPieces, selectedSetId }) => {
     setClickedImage(image);
   }
   return (
-    <Grid className="mt-[116px]" container justifyContent={"center"}>
+    <Grid container justifyContent={"center"}>
       <TableContainer component={Paper} className="margin-md">
         <Table aria-label="simple table">
           <TableHead>

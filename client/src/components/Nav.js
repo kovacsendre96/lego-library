@@ -32,13 +32,13 @@ const Nav = () => {
   function renderMenuItems() {
     return (
       <>
-        <Link className="link m-2" to={"/lego-sets"}>
+        <Link onClick={() => setSidebarOpen(false)} className="link m-2" to={"/lego-sets"}>
           <MenuItem style={{ color: isActiveMenu("/lego-sets") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Saját lista</MenuItem>
         </Link>
-        <Link className="link m-2" to={"/new-set"}>
+        <Link onClick={() => setSidebarOpen(false)} className="link m-2" to={"/new-set"}>
           <MenuItem style={{ color: isActiveMenu("/new-set") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Keresés</MenuItem>
         </Link>
-        <Link className="link m-2" to={"/missing-pieces"}>
+        <Link onClick={() => setSidebarOpen(false)} className="link m-2" to={"/missing-pieces"}>
           <MenuItem style={{ color: isActiveMenu("/missing-pieces") ? "#FBC620" : "white" }} className="!text-sm md:!text-lg hover:scale-105 hover:font-bold duration-150 !tracking-wider " variant="contained">Hiányzó elemek</MenuItem>
         </Link>
       </>
@@ -49,8 +49,8 @@ const Nav = () => {
     <>
       <Box id="navBar" sx={{ flexGrow: 1 }} className="w-full p-2">
         {sidebarOpen &&
-          <div className="w-screen animate-slide-down h-[350px]">
-            <div className="h-[116px] flex justify-between pb-4">
+          <div className="w-screen animate-slide-down h-[350px] ">
+            <div className="h-[116px] flex justify-between pb-4 ">
               <MenuItem>
                 <IconButton
                   size="large"

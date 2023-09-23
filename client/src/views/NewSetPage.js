@@ -58,8 +58,8 @@ const NewSetPage = () => {
 
     return (
 
-        <div className="w-full min-h-screen h-auto flex items-center flex-col mt-[116px]">
-            <div className="w-full h-[120px] bg-yellow-gradient flex items-center justify-center fixed top-[116px] z-10">
+        <div className="w-full min-h-screen h-auto flex items-center flex-col">
+            <div className="w-full h-[120px] bg-yellow-gradient flex items-center justify-center sticky top-[116px]">
                 <div className="relative  w-[70%] max-w-xl">
                     <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder="Név vagy azonosító Pl.: Castle" className="w-full rounded-2xl py-3 h-[70px] px-4 pr-10" />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -74,7 +74,7 @@ const NewSetPage = () => {
 
             {isLoading ? renderSpinner() : null}
             {searchResult.map((result, index) => (
-                <div onClick={() => navigate(`/lego-sets/${result?.id}`)} key={result.id} className="shadow-lg hover:scale-105 duration-150 hover:shadow-2xl w-[70%] max-w-xl rounded-2xl mt-5 p-3 cursor-pointer bg-white items-center flex flex-col sm:flex-row">
+                <div onClick={() => navigate(`/lego-sets/${result?.id}`)} key={result.id} className="shadow-lg  duration-150 hover:shadow-2xl w-[70%] max-w-xl rounded-2xl mt-5 p-3 cursor-pointer bg-white items-center flex flex-col sm:flex-row">
                     <img className={`h-[120px] w-[100px] ${result?.set_img_url ? 'object-cover' : 'object-contain'}`} src={result?.set_img_url ?? notFound} alt={result.name} />
                     <div className="flex flex-col ml-5 mt-5 sm:mt-0">
                         <h3>{result?.name}</h3>
