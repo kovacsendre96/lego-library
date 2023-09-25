@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -6,6 +7,9 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
+  MenuItem,
+  Tab,
+  Tabs,
   Tooltip,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -23,6 +27,7 @@ import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import AddIcon from '@mui/icons-material/Add';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ExtensionIcon from '@mui/icons-material/Extension';
+import Minifigures from "../components/Minifugures";
 
 
 const LegoDetailsPage = () => {
@@ -32,6 +37,7 @@ const LegoDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("parts"); //parts ||minifigures
 
   const navigate = useNavigate();
   const legoSetService = new LegoSetService();
@@ -108,7 +114,6 @@ const LegoDetailsPage = () => {
             max_price={legoSet.max_price}
             legoDataFromMyList={legoDataFromMyList}
           />
-
           <div className="flex justify-center items-center flex-wrap w-full flex-col md:flex-row">
             <StyledButton className={"m-2"} icon={<LaunchIcon />} children={<a target="_blank" rel="noopener noreferrer" href={legoSet.set_url}>Ugrás a Rebrickable-re</a>} />
             {legoDataFromMyList
@@ -126,39 +131,56 @@ const LegoDetailsPage = () => {
               <StyledButton className={"m-2"} icon={<AddIcon />} onClick={handleSaveToList} children={'Mentés saját listába'} />
             }
           </div>
-          <SetParts set_id={legoSet.set_num} />
-          <Dialog
-            open={openConfirmationDialog}
-            onClose={() => setOpenConfirmationDialog(false)}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">{"Törlés"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Biztosan ki szeretnéd törölni ?
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                variant="contained"
-                startIcon={<DeleteIcon />}
-                children={"Törlés"}
-                color="error"
-                onClick={handleDelete}
-                className="margin-sm"
-              />
-            </DialogActions>
-          </Dialog>
+          <div className="mt-10 container">
+            <div className="flex items-center">
+              <MenuItem onClick={() => setSelectedTab("parts")} className={` hover:bg-yellow-gradient ${selectedTab === "parts" ? "hover : bg - yellow - gradient !border-t-2 !border-t-custom-yellow !border-l-2 !border-r-2" : ''}`} style={{ border: "inherit" }}>
+                <span className="cursor-pointer">Elemek
+                </span>
+              </MenuItem>
+              <MenuItem onClick={() => setSelectedTab("minifigures")} className={` hover:bg-yellow-gradient ${selectedTab === "minifigures" ? "hover : bg - yellow - gradient !border-t-2 !border-t-custom-yellow !border-l-2 !border-r-2" : ''}`} style={{ border: "inherit" }}>
+                <span className="cursor-pointer">
+                  Figurák
+                </span>
+              </MenuItem>
+            </div>
+          </div>
+          <div className="container mb-10 border-2">
+            {selectedTab === "parts" ?
+              <SetParts set_id={legoSet.set_num} /> :
+              <Minifigures />}
+            <Dialog
+              open={openConfirmationDialog}
+              onClose={() => setOpenConfirmationDialog(false)}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{"Törlés"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Biztosan ki szeretnéd törölni ?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  variant="contained"
+                  startIcon={<DeleteIcon />}
+                  children={"Törlés"}
+                  color="error"
+                  onClick={handleDelete}
+                  className="margin-sm"
+                />
+              </DialogActions>
+            </Dialog>
 
-          <EditDialog
-            openEditDialog={openEditDialog}
-            setOpenEditDialog={setOpenEditDialog}
-            legoSet={legoSet}
-            setLegoSet={setLegoSet}
-            legoDataFromMyList={legoDataFromMyList}
-            setLegoDataFromMyList={setLegoDataFromMyList}
-          />
+            <EditDialog
+              openEditDialog={openEditDialog}
+              setOpenEditDialog={setOpenEditDialog}
+              legoSet={legoSet}
+              setLegoSet={setLegoSet}
+              legoDataFromMyList={legoDataFromMyList}
+              setLegoDataFromMyList={setLegoDataFromMyList}
+            />
+          </div>
         </>
       </Grid >
     );

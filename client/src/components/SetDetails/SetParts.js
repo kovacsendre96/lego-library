@@ -20,7 +20,7 @@ const SetParts = ({ set_id }) => {
   async function getParts(page, pageSize) {
     const parts = await rebrickableService.getSetParts(set_id, page, pageSize);
     const rowData = parts.results.map((part) => {
-      console.log(part.set_num);
+
       return {
         img: part.part.part_img_url,
         set_num: part.set_num,
@@ -86,8 +86,29 @@ const SetParts = ({ set_id }) => {
     setSelectedParts(part);
     setAddMissingPartsModal(true)
   }
+
+  if (!rows.length) {
+    return (
+      <TableContainer component={Paper} className="!overflow-visible">
+        <Table>
+          <TableHead>
+            <TableRow>
+              {columns.map(column =>
+              (<TableCell key={column.field}>
+                {column.headerName}
+              </TableCell>))}
+            </TableRow>
+          </TableHead>
+          <TableBody className="h-screen">
+
+          </TableBody>
+        </Table>
+      </TableContainer>
+    )
+  }
+
   return (
-    <Grid className="mt-10 relative" container>
+    <Grid className="relative" container>
       <TableContainer component={Paper} className="!overflow-visible">
         <div className="flex items-center justify-between w-full bg-yellow-gradient p-3 sticky z-10" style={{ top: document.getElementById("navBar").clientHeight }}>
           <div className="flex items-center">
@@ -97,7 +118,7 @@ const SetParts = ({ set_id }) => {
               <MenuItem disabled={Math.ceil(count / 50) < page ? true : false} value="50" >50</MenuItem>
               <MenuItem disabled={Math.ceil(count / 100) < page ? true : false} value="100" >100</MenuItem>
             </Select>
-            <h3>találtok száma: {rows.length}</h3>
+            <h3>Összes darabszám:  {count}</h3>
           </div>
           <Pagination page={page} count={Math.ceil(count / pageSize)} onChange={handlePaginationChange} />
         </div>
@@ -127,11 +148,11 @@ const SetParts = ({ set_id }) => {
                   <img className="sm:h-20 sm:w-20 object-contain cursor-pointer" onClick={() => handleImageClick(row.img)} src={row.img} alt={row.name} />
 
                 </TableCell>
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.quantity}</TableCell>
-                <TableCell align="right">{row.color}</TableCell>
-                <TableCell align="right"><Link to={`${row.link}`} >További infó</Link></TableCell>
+                <TableCell align="left">{row.id}</TableCell>
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left">{row.quantity}</TableCell>
+                <TableCell align="left">{row.color}</TableCell>
+                <TableCell align="left"> <a target="_blank" href={row.link}>További infó</a></TableCell>
               </TableRow>
             ))}
           </TableBody>

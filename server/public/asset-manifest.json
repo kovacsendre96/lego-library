@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0d1da362.css",
-    "main.js": "/static/js/main.5075fd38.js",
+    "main.css": "/static/css/main.60f40182.css",
+    "main.js": "/static/js/main.97834ba5.js",
     "static/media/logo.png": "/static/media/logo.425e62c1dc2eca387483.png",
     "static/media/Lego Spinner.gif": "/static/media/Lego Spinner.4549a8b4d2af48232ee2.gif",
     "static/media/Fredoka-VariableFont_wdth,wght.ttf": "/static/media/Fredoka-VariableFont_wdth,wght.1cfa1639746e014c46fc.ttf",
@@ -11,11 +11,11 @@
     "static/media/error-not-found-404-lego.jpg": "/static/media/error-not-found-404-lego.a2b1f210e1f774d1bca0.jpg",
     "static/media/Legothick.ttf": "/static/media/Legothick.f552ac9867964e9901b4.ttf",
     "index.html": "/index.html",
-    "main.0d1da362.css.map": "/static/css/main.0d1da362.css.map",
-    "main.5075fd38.js.map": "/static/js/main.5075fd38.js.map"
+    "main.60f40182.css.map": "/static/css/main.60f40182.css.map",
+    "main.97834ba5.js.map": "/static/js/main.97834ba5.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d1da362.css",
-    "static/js/main.5075fd38.js"
+    "static/css/main.60f40182.css",
+    "static/js/main.97834ba5.js"
   ]
 }

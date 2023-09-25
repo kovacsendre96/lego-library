@@ -38,4 +38,13 @@ export default class RebrickableService {
       .then((response) => response.data)
       .catch((error) => console.log(error));
   }
+
+  async getMinifigsById(setId) {
+    return axios
+      .get(
+        `${this.BASE_URL}/api/v3/lego/sets/${setId}/minifigs?key=${process.env.REACT_APP_REBRICKABLE_TOKEN}`
+      )
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+  }
 }
